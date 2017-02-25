@@ -12,7 +12,7 @@ Remaining to do:
 
 How to use this code:
 * Navigate to where smsn-docker.sh (or this README file) is. Call that place PATH.
-* Optional but recommended: Download apache-tinkerpop-gremlin-server-3.2.4-bin.zip to PATH.
+* Optional but recommended: Download the [Gremlin Server](https://www.apache.org/dyn/closer.lua/tinkerpop/3.2.4/apache-tinkerpop-gremlin-console-3.2.4-bin.zip) zip file to PATH.
     * This script can download it, but it's not smart about handling mirrors, hence slow.
     * Josh wrote a script that is clever about that; see the section called "# fetch and expand Gremlin Server" of the file install-smsn.unfinished.sh. I have not incorprated that code into this yet.
 * From a shell, run this.
