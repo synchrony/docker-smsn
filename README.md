@@ -7,7 +7,7 @@ How to use this code:
   After that, from within the resulting Docker-contained shell, run:
     bash /mnt/docker-smsn.sh
 
-Note that this gives the Docker container access to all the files in PATH. It shoulkd not modify them.
+Note that this gives the Docker container access to all the files in PATH. It shoulkd not modify them. (Later, Docker will also have access through /mnt to a host folder called smsn-data, which it will modify.)
 
 If PATH contains apache-tinkerpop-gremlin-server-3.2.4-bin.zip, the script will not have to download that again.
 
