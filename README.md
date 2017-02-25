@@ -1,6 +1,6 @@
 What this does:
 * Creates a Docker container
-* Installs SmSn
+* Installs Semantic Synchrony
 * Sometimes, installs Gremlin-Server
     * Lately it can't seem to download Grapes
 * Configures Gremlin-Server to work with SmSn
