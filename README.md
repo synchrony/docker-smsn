@@ -3,9 +3,9 @@ How to use this code:
   From a shell, run this.
     sudo docker run -it --name smsn-docker -v PATH:/mnt ubuntu bash
     For instance, I use this:
-      sudo docker run -it --name smsn-docker -v /home/jeff/smsn-docker:/mnt ubuntu bash
+      sudo docker run -it --name smsn-docker -v /home/jeff/docker-smsn:/mnt ubuntu bash
   After that, from within the resulting Docker-contained shell, run:
-    bash /mnt/smsn-docker.sh
+    bash /mnt/docker-smsn.sh
 
 Note that this gives the Docker container access to all the files in PATH. It shoulkd not modify them.
 

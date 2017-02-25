@@ -1,7 +1,4 @@
-## (one way) to run this file
-  ## sudo docker run -it --name smsn-docker -v /home/jeff/apps/docker/smsn-docker/context:/mnt ubuntu bash
-  ## (and then from within the Docker shell)
-  ## bash /mnt/smsn-docker.sh
+#!/bin/bash
 
 TINKERPOP_VERSION=3.2.4
 GREMLIN=apache-tinkerpop-gremlin-server-$TINKERPOP_VERSION
