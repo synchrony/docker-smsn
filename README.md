@@ -6,8 +6,9 @@ What this does:
 * Configures Gremlin-Server to work with SmSn
 
 Remaining to do:
-* Mount external graph data
-* Make a Docker image from it
+* Mount external graph (and activity log) data, which it will modify
+* Talk to an external Emacs
+* Make a Docker image out of it
 
 How to use this code:
 * Navigate to where smsn-docker.sh (or this README file) is. Call that place PATH.
