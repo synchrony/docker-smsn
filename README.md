@@ -7,6 +7,7 @@ What this does:
 
 Remaining to do:
 * Mount external graph (and activity log) data, which it will modify
+    * The config files are designed such that docker-smsn expects to have access to an external folder called smsn-data/, located in the Docker container at /mnt, with a subfolder /mnt/smsn-data/neo4j to hold the graph and next to that a file /mnt/smsn-data/activity.log.
 * Talk to an external Emacs
 * Make a Docker image out of it
 
@@ -20,8 +21,3 @@ How to use this code:
     * This gives the Docker container access to all the files in PATH. It does not modify them.
 * After that, from within the resulting Docker-contained shell, run:
     * bash /mnt/docker-smsn.sh
-
-
-
-
-
