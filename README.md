@@ -17,7 +17,7 @@ How to use this code:
     * This script can download it, but it's not smart about handling mirrors, hence slow.
     * Josh wrote a script that is clever about that; see the section called "# fetch and expand Gremlin Server" of the file install-smsn.unfinished.sh. I have not incorprated that code into this yet.
 * From a shell, run this.
-    * sudo docker run -it --name smsn-docker -v PATH:/mnt ubuntu bash
+    * sudo docker run -it --name smsn-docker -v PATH:/mnt jeffreybbrown/docker-smsn-prelims bash
     * This gives the Docker container access to all the files in PATH. It does not modify them.
 * After that, from within the resulting Docker-contained shell, run:
     * bash /mnt/docker-smsn.sh

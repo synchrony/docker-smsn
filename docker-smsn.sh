@@ -1,21 +1,9 @@
 #!/bin/bash
 
+               ## Tinkerpop
 TINKERPOP_VERSION=3.2.4
 GREMLIN=apache-tinkerpop-gremlin-server-$TINKERPOP_VERSION
 
-apt update
-apt install -y git wget unzip maven
-apt install -y default-jre default-jdk # java
-
-
-                ## Semantic Synchrony
-cd /root
-git clone https://github.com/joshsh/smsn.git
-cd /root/smsn
-mvn clean install
-
-
-               ## Tinkerpop
 cd /root
 
 if [ -f /mnt/$GREMLIN-bin.zip ]; then
@@ -26,11 +14,10 @@ fi
 unzip $GREMLIN-bin.zip 
 rm $GREMLIN-bin.zip
 
-cp /mnt/grapeConfig.xml .groovy
+cp /mnt/grapeConfig.xml /root/.groovy/grapeConfig.xml
 cd $GREMLIN
 bin/gremlin-server.sh -i org.apache.tinkerpop neo4j-gremlin 3.2.4
 
 mkdir -p ext/smsn/plugin
 cp /root/smsn/smsn-server/target/smsn-server-*-standalone.jar ext/smsn/plugin
-
 cp /mnt/gremlin-server-smsn.yaml /mnt/neo4j.properties /mnt/smsn.properties conf
