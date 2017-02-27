@@ -4,7 +4,7 @@ RUN apt install -y git wget unzip maven
 RUN apt install -y default-jre default-jdk # java
 
 WORKDIR /root
-RUN git clone https://github.com/joshsh/smsn.git
+RUN git clone -b develop https://github.com/joshsh/smsn.git
 WORKDIR /root/smsn
 RUN mvn clean install
 
