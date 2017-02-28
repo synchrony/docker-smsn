@@ -1,6 +1,6 @@
 host: localhost
-port: 8182
-scriptEvaluationTimeout: 300000
+port: 8185
+scriptEvaluationTimeout: 7200000
 channelizer: org.apache.tinkerpop.gremlin.server.channel.HttpChannelizer
 graphs: {
   graph: conf/neo4j.properties}

@@ -9,4 +9,7 @@ RUN mkdir -p /root/gremlin/ext/smsn/plugin
 RUN cp /root/smsn/smsn-server/target/smsn-server-*-standalone.jar /root/gremlin/ext/smsn/plugin
 COPY gremlin-server-smsn.yaml neo4j.properties smsn.properties /root/gremlin/conf/
 
+WORKDIR /root/gremlin
+# CMD ["/root/gremlin/bin/gremlin-server.sh /root/gremlin/conf/gremlin-server-smsn.yaml"]
+RUN mkdir /mnt/smsn-data
 CMD ["/bin/bash"]
