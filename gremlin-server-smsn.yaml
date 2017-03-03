@@ -1,5 +1,5 @@
 host: localhost
-port: 8185
+port: 8182
 scriptEvaluationTimeout: 7200000
 channelizer: org.apache.tinkerpop.gremlin.server.channel.HttpChannelizer
 graphs: {
