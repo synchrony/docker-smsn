@@ -26,7 +26,8 @@ RUN python setup.py install
 WORKDIR /root
 RUN git clone -b develop https://github.com/joshsh/smsn.git
 WORKDIR /root/smsn
-RUN git checkout 0fb1fffb0b99b8a5d9a1e6563d9ee6de5d467ffc # ! hack
+# RUN git checkout 301ac82476dac26db44c9f55e40ce82e8ae1ef13 # ! hack
+RUN git pull
 RUN mvn clean install
 
 # gremlin
