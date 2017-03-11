@@ -35,7 +35,7 @@ RUN /root/gremlin/bin/gremlin-server.sh -i org.apache.tinkerpop neo4j-gremlin 3.
 WORKDIR /root
 RUN git clone -b develop https://github.com/joshsh/smsn.git
 WORKDIR /root/smsn
-RUN git pull    # why did I used to need the commit ID?
+RUN echo '1' >/dev/null && git pull # increment number to avoid using cache
 RUN mvn clean install
 
 # configure Gremlin for Semantic Synchrony
