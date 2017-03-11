@@ -1,7 +1,8 @@
 host: localhost
 port: 8182
 scriptEvaluationTimeout: 7200000
-channelizer: org.apache.tinkerpop.gremlin.server.channel.HttpChannelizer
+# channelizer: org.apache.tinkerpop.gremlin.server.channel.HttpChannelizer
+  # was for HTTP; now using WebSocket
 graphs: {
   graph: conf/neo4j.properties}
 plugins:
