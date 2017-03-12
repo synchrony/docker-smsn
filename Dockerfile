@@ -30,12 +30,14 @@ RUN ln -s /root/apache-tinkerpop-gremlin-server-3.2.4 /root/gremlin
 
 COPY grapeConfig.xml /root/.groovy/grapeConfig.xml
 RUN /root/gremlin/bin/gremlin-server.sh -i org.apache.tinkerpop neo4j-gremlin 3.2.4
+RUN echo "bin/gremlin-server.sh conf/gremlin-server-smsn.yaml" >> start.sh
 
 # Semantic Synchrony
 WORKDIR /root
 RUN git clone -b develop https://github.com/joshsh/smsn.git
 WORKDIR /root/smsn
-RUN echo '1' >/dev/null && git pull # increment number to avoid using cache
+RUN echo '2' >/dev/null && git pull # increment number to avoid using cache
+  # that is, in order to get the latest smsn from git
 RUN mvn clean install
 
 # configure Gremlin for Semantic Synchrony
