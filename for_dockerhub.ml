@@ -11,10 +11,7 @@ Docker is supposedly easy to use in Windows and Mac, too. These steps work in Li
 docker run -it --network="host" -v /THE/FOLDER/YOU/MADE:/mnt/smsn-data jeffreybbrown/smsn.2017-03-04
 ```
 (Substitute the path to the folder you made (including its name) where you see /THE/FOLDER/YOU/MADE.) This will bring up a shell within the Docker container. It's like another computer inside your computer.
-* In the Docker container, navigate to `/root/gremlin` and run
-```
-bash bin/gremlin-server.sh conf/gremlin-server-smsn.yaml
-```
+* In the Docker container, navigate to `/root/gremlin` and run `start.sh`.
 Now Gremlin Server is running, using Semantic Synchrony to serve the graph you gave it access to in the first step, at http://localhost:8182. When you terminate the Docker container, its data will vanish, but the graph at PATH will still be there.
 * All that remains is to install Emacs and configure it to work with Semantic Synchrony -- see steps 6 and 7 [here](https://github.com/joshsh/smsn/wiki/Extend-o-Brain-installation).
 
