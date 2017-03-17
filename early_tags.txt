@@ -1,0 +1,17 @@
+Early on, I thought tags could only be integers. Today (2017 03 17) I discovered they can be more informative; from now on they will be. The date at which the earlier tags were compiled is almost surely never going to matter to anyone, but just in case, here they are preserved for posterity.
+
+jeff@jbb-thinkpad:~/docker-smsn$ date
+Fri Mar 17 15:27:05 PDT 2017
+jeff@jbb-thinkpad:~/docker-smsn$ sudo docker images
+REPOSITORY           TAG                 IMAGE ID            CREATED             SIZE
+jeffreybbrown/smsn   2017-03-17.0        3830a48568e6        2 hours ago         1.76 GB
+jeffreybbrown/smsn   8                   a0e81d7c98be        5 days ago          1.76 GB
+jeffreybbrown/smsn   7                   43a28a036fd0        6 days ago          1.76 GB
+jeffreybbrown/smsn   6                   47cecccc9ba6        6 days ago          1.76 GB
+jeffreybbrown/smsn   5                   ab7f1a86a5f3        6 days ago          1.76 GB
+jeffreybbrown/smsn   4                   c0f3ecb0c7d2        8 days ago          1.76 GB
+jeffreybbrown/smsn   3                   134ba9315dfb        8 days ago          1.76 GB
+jeffreybbrown/smsn   2                   2f07fb417be1        12 days ago         1.76 GB
+jeffreybbrown/smsn   1                   d410ccc634c1        13 days ago         1.77 GB
+jeffreybbrown/smsn   0                   b906145c0bdc        2 weeks ago         1.77 GB
+ubuntu               latest              f8d79ba03c00        7 months ago        126 MB
