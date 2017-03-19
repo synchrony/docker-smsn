@@ -35,7 +35,7 @@ RUN echo "bin/gremlin-server.sh conf/gremlin-server-smsn.yaml" >> start.sh
 
 # Semantic Synchrony
 WORKDIR /root
-RUN git clone -b develop https://github.com/joshsh/smsn.git
+RUN git clone -b develop https://github.com/synchrony/smsn.git
 WORKDIR /root/smsn
 RUN echo '4' >/dev/null && git pull # increment number to ignore cache
   # that is, in order to get the latest smsn from git
