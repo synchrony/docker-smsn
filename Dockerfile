@@ -30,8 +30,6 @@ RUN ln -s /root/apache-tinkerpop-gremlin-server-3.2.4 /root/gremlin
 
 COPY grapeConfig.xml /root/.groovy/grapeConfig.xml
 RUN /root/gremlin/bin/gremlin-server.sh -i org.apache.tinkerpop neo4j-gremlin 3.2.4
-RUN echo "bin/gremlin-server.sh conf/gremlin-server-smsn.yaml" >> start.sh
-  # todo: unify this line with the COPY commands at the end
 
 # Semantic Synchrony
 WORKDIR /root
@@ -42,11 +40,12 @@ RUN echo '4' >/dev/null && git pull # increment number to ignore cache
 RUN mvn clean install
 
 # configure Gremlin for Semantic Synchrony
-  # COPY copies from the Docker context; "RUN cp", from within the container
 RUN mkdir -p /root/gremlin/ext/smsn/plugin
-COPY start.alt-port.sh /root/gremlin
+COPY start.sh /root/gremlin
 COPY deploy-jar.sh /root/smsn
 RUN bash /root/smsn/deploy-jar.sh
 COPY gremlin-server-smsn.yaml neo4j.properties smsn.properties /root/gremlin/conf/
+
+EXPOSE 8182
 
 CMD ["/bin/bash"]
