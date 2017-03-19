@@ -48,4 +48,5 @@ COPY gremlin-server-smsn.yaml neo4j.properties smsn.properties /root/gremlin/con
 
 EXPOSE 8182
 
-CMD ["/bin/bash"]
+RUN chmod 700 /root/gremlin/start.sh
+CMD ["/root/gremlin/start.sh"]
