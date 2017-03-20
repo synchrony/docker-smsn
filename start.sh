@@ -1,13 +1,20 @@
 #!/bin/bash
 
+env
+
 cd $(dirname $0)
 
 CONF=conf/gremlin-server-smsn.yaml
+
+# adapted from github.com/htaox/NEAT
+IP=$(ip -o -4 addr list eth0 | perl -n -e 'if (m{inet\s([\d\.]+)\/\d+\s}xms) { print $1 }')
+echo "Using host $IP"
+sed -i "s|^host:.*|host: $IP|" $CONF
+
 if [ $# -gt 0 ]
   then
     echo "Using alternate port $1"
-    sed "s/8182/$1/" $CONF > /tmp/gremlin-server-smsn-temp.yaml
-    CONF=/tmp/gremlin-server-smsn-temp.yaml
+    sed -i "s|^port:.*|port: $1|" $CONF
 fi
 
 exec bin/gremlin-server.sh $CONF
