@@ -8,7 +8,7 @@ Docker is supposedly easy to use in Windows and Mac, too. These steps work in Li
 * Create a folder on your machine where the SmSn Neo4j graph and activity log will reside. Those contents don't have to exist yet.
 * From a shell, run
 ```
-docker run -it --network="host" -v /THE/FOLDER/YOU/MADE:/mnt/smsn-data jeffreybbrown/smsn:latest
+docker run -v /THE/FOLDER/YOU/MADE:/mnt/smsn-data -p 8182:8182 -d -h 127.0.0.1 jeffreybbrown/smsn:2017-03-19.1
 ```
 (Substitute the path to the folder you made (including its name) where you see /THE/FOLDER/YOU/MADE.) This will bring up a shell within the Docker container. It's like another computer inside your computer.
 * In the Docker container, navigate to `/root/gremlin` and run `start.sh`.
