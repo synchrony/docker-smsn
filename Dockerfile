@@ -12,7 +12,7 @@ ENV LC_ALL en_US.UTF-8
 
 # misc prerequisites
 RUN apt update
-RUN apt install -y git wget unzip maven vim openssh-server
+RUN apt install -y git wget unzip maven vim
 RUN apt install -y default-jre default-jdk # java
 RUN apt install -y tcpdump net-tools locales python # maybe not needed
 
