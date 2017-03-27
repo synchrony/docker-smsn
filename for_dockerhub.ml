@@ -12,7 +12,7 @@ docker run -v /THE/FOLDER/YOU/MADE:/mnt/smsn-data -p 8182:8182 -d -h 127.0.0.1 j
 ```
 (Substitute the path to the folder you made (including its name) where you see /THE/FOLDER/YOU/MADE.)
 * Now Gremlin Server is running (inside a Docker virtual machine), using Semantic Synchrony to serve the graph you gave it access to in the first step, at http://localhost:8182. When you terminate the Docker container, its data will vanish, but the graph at PATH will still be there.
-* All that remains is to install Emacs and configure it to work with Semantic Synchrony -- see steps 6 and 7 [here](https://github.com/joshsh/smsn/wiki/installation).
+* All that remains is to test Gremlin Server, install Emacs, and configure Emacs to work with Semantic Synchrony -- start at "Step 5.1: test Gremlin Server" [here](https://github.com/joshsh/smsn/wiki/installation).
 
 ## How it was built + history of changes
 * https://github.com/JeffreyBenjaminBrown/docker-smsn
