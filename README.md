@@ -1,5 +1,5 @@
 This code created the Docker image for docker-smsn, located at
-https://hub.docker.com/r/jeffreybbrown/docker-smsn/
+https://hub.docker.com/r/jeffreybbrown/smsn/
 
 # This creates a Docker image with:
 * Semantic Synchrony installed
