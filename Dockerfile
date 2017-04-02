@@ -36,11 +36,8 @@ RUN /root/gremlin/bin/gremlin-server.sh -i org.apache.tinkerpop neo4j-gremlin 3.
 WORKDIR /root
 RUN git clone -b develop https://github.com/synchrony/smsn.git
 WORKDIR /root/smsn
-RUN echo '7`' >/dev/null && git pull
-  # better yet: rather than a meaningless integer, use the date and time
-    # I'm not doing that this time because it would make me have to rebuild
-  # increment number to ignore cache
-  # that is, in order to get the latest smsn from git
+RUN echo "Sun Apr  2 13:18:21 PDT 2017" >/dev/null && git pull
+  # update string to ignore cache, pull latest smsn from git
 RUN mvn clean install
 
 # configure Gremlin for Semantic Synchrony
