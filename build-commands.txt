@@ -1,0 +1,13 @@
+Modify the line that echoes to /dev/null.
+
+Build, from top of docker-smsn:
+  sudo docker build -f branches/master/Dockerfile -t jeffreybbrown/smsn:just-built . | tee branches/master/build-log.txt
+
+  sudo docker build -f branches/develop/Dockerfile -t jeffreybbrown/smsn-develop:just-built . | tee branches/develop/build-log.txt
+
+After running each, test it. If it works, change the tag (substitute for SOMETHING):
+  sudo docker tag smsn:just-built smsn:SOMETHING
+  sudo docker tag smsn:just-built smsn:latest
+
+  sudo docker tag smsn-develop:just-built smsn-develop:SOMETHING
+  sudo docker tag smsn-develop:just-built smsn-develop:latest
