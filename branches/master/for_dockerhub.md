@@ -1,6 +1,8 @@
 ## What it is
 This Docker image makes [Semantic Synchrony](https://github.com/joshsh/smsn/) easy to install.
 
+This is the master branch, i.e. stable. If you want all the latest features, you can use the [develop branch](https://hub.docker.com/r/jeffreybbrown/smsn-develop/) instead.
+
 ## How to use it
 Depending on your system's permissions, you might have to prefix the docker commands listed here with sudo.
 Docker is supposedly easy to use in Windows and Mac, too. These steps work in Linux.
