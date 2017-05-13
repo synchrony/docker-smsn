@@ -3,36 +3,44 @@ Build
 Build (outside of docker) both branches of smsn.
 
 Copy them to docker-smsn:
-     cp ~/smsn+/smsn-master/smsn-server/target/smsn-server-*-standalone.jar ~/smsn+/docker-smsn/branches/master/
-     cp ~/smsn+/smsn/smsn-server/target/smsn-server-*-standalone.jar ~/smsn+/docker-smsn/branches/develop/
+     cp ~/smsn+/smsn/smsn-server/target/smsn-server-*-standalone.jar         ~/smsn+/docker-smsn/branches/master/
+     cp ~/smsn+/smsn-develop/smsn-server/target/smsn-server-*-standalone.jar ~/smsn+/docker-smsn/branches/develop/
 
 Build, from top of docker-smsn:
-  sudo docker build -f branches/master/Dockerfile -t jeffreybbrown/smsn:just-built . | tee branches/master/logs/"build-log.`date`.txt"
+  sudo docker build -f branches/master/Dockerfile -t jeffreybbrown/smsn:new-untested . | tee branches/master/logs/"build-log.`date`.txt"
 
-  sudo docker build -f branches/develop/Dockerfile -t jeffreybbrown/smsn-develop:just-built . | tee branches/develop/logs/"build-log.`date`.txt"
+  sudo docker build -f branches/develop/Dockerfile -t jeffreybbrown/smsn-develop:new-untested . | tee branches/develop/logs/"build-log.`date`.txt"
 
 Test
 ====
 Configure emacs:
-  In emacs.d/elisp/, fiddle with the link:
-    ln -s /home/jeff/smsn+/mode-master/lisp smsn-mode-lisp 
-    ln -s /home/jeff/smsn+/mode/lisp smsn-mode-lisp
+  In emacs.d/elisp/, fiddle with the link (there are scripts for this):
+    ln -s /home/jeff/smsn+/mode/lisp smsn-mode-lisp 
+    ln -s /home/jeff/smsn+/mode-develop/lisp smsn-mode-lisp
   In .emacs
     change the port between 8182 and 8183
-    toggle between smsn-mode and brain-mode
+    done ! toggle between smsn-mode and brain-mode
+      conditional on Josh saying okay to push it
 
 Run the docker image
-  Run ON DIFFERENT VCS FOLDERS if running two docker containers.
-  Fiddle the first port between 8182 and 8183.
-    The Docker port is always 8182.
-  An example for master branch:
-    sudo docker run -it -v /home/jeff/smsn+/kb-blank:/mnt/smsn-data -p 8183:8182 -d -h 127.0.0.1 jeffreybbrown/smsn  # is MASTER branch
+  Prepare | what differs
+    Note inconsistent: Elsewhere, master is made explicit; here, develop
+    Be inconsistent: Use DIFFERENT VCS FOLDERS if running two docker containers
+    Fiddle the first port between 8182 and 8183.
+      The Docker port is always 8182.
+
+  Run develop branch, on REAL DATA
+    sudo docker run -it -v /home/jeff/smsn+/kb:/mnt/smsn-data -p 8182:8182 -d -h 127.0.0.1 jeffreybbrown/smsn-develop
+
+  Run master branch, from empty
+    sudo docker run -it -v /home/jeff/smsn+/kb-blank:/mnt/smsn-data -p 8182:8182 -d -h 127.0.0.1 jeffreybbrown/smsn
 
 Save
 ===
 After running each, test it. If it works, change the tag (substitute for DATE-EXPRESSION):
-  sudo docker tag smsn:just-built smsn:DATE-EXPRESSION
-  sudo docker tag smsn:just-built smsn:latest
-
-  sudo docker tag smsn-develop:just-built smsn-develop:DATE-EXPRESSION
-  sudo docker tag smsn-develop:just-built smsn-develop:latest
+  -- duh
+    sudo docker tag smsn:just-built smsn:DATE-EXPRESSION
+    sudo docker tag smsn:just-built smsn:latest
+  
+    sudo docker tag smsn-develop:just-built smsn-develop:DATE-EXPRESSION
+    sudo docker tag smsn-develop:just-built smsn-develop:latest
