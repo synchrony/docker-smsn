@@ -12,7 +12,7 @@ plugins:
   - smsn
 scriptEngines: {
   smsn: {
-    scripts: [conf/smsn.properties]
+    scripts: [conf/smsn.yaml]
   },
   gremlin-groovy: {
     imports: [java.lang.Math],
