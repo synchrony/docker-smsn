@@ -33,18 +33,19 @@ COPY grapeConfig.xml /root/.groovy/grapeConfig.xml
 RUN /root/gremlin/bin/gremlin-server.sh -i org.apache.tinkerpop neo4j-gremlin 3.2.4
 
 # Semantic Synchrony
-WORKDIR /root
-RUN git clone -b master https://github.com/synchrony/smsn.git
-WORKDIR /root/smsn
-RUN echo "Sun Apr 23 12:22:12 PDT 2017" >/dev/null && git pull
-  # update string to ignore cache, pull latest smsn from git
-RUN mvn clean install
+#WORKDIR /root
+#RUN git clone -b master https://github.com/synchrony/smsn.git
+#WORKDIR /root/smsn
+#RUN echo "Sun Apr 23 12:22:12 PDT 2017" >/dev/null && git pull
+#  # update string to ignore cache, pull latest smsn from git
+#RUN mvn clean install
 
 # configure Gremlin for Semantic Synchrony
 RUN mkdir -p /root/gremlin/ext/smsn/plugin
 COPY start.sh /root/gremlin
-COPY deploy-jar.sh /root/smsn
-RUN bash /root/smsn/deploy-jar.sh
+#COPY deploy-jar.sh /root/smsn
+#RUN bash /root/smsn/deploy-jar.sh
+COPY branches/master/smsn-server-*-standalone.jar /root/gremlin/ext/smsn/plugin
 COPY gremlin-server-smsn.yaml neo4j.properties smsn.properties /root/gremlin/conf/
 
 EXPOSE 8182
