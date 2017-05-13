@@ -4,7 +4,7 @@ Build (outside of docker) both branches of smsn.
 
 Copy them to docker-smsn:
      cp ~/smsn+/smsn-master/smsn-server/target/smsn-server-*-standalone.jar ~/smsn+/docker-smsn/branches/master/
-     cp ~/smsn+/smsn-develop/smsn-server/target/smsn-server-*-standalone.jar ~/smsn+/docker-smsn/branches/develop/
+     cp ~/smsn+/smsn/smsn-server/target/smsn-server-*-standalone.jar ~/smsn+/docker-smsn/branches/develop/
 
 Build, from top of docker-smsn:
   sudo docker build -f branches/master/Dockerfile -t jeffreybbrown/smsn:just-built . | tee branches/master/logs/"build-log.`date`.txt"
