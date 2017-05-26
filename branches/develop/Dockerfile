@@ -5,7 +5,9 @@ RUN echo "root:smsn" | chpasswd
 RUN mkdir /mnt/smsn-data
 
 # choose a character set
-RUN locale-gen en_US.UTF-8  
+RUN apt-get clean && apt-get update
+RUN apt-get install locales
+RUN locale-gen en_US.UTF-8
 ENV LANG en_US.UTF-8  
 ENV LANGUAGE en_US:en  
 ENV LC_ALL en_US.UTF-8
@@ -36,7 +38,7 @@ RUN /root/gremlin/bin/gremlin-server.sh -i org.apache.tinkerpop neo4j-gremlin 3.
 #WORKDIR /root
 #RUN git clone -b develop https://github.com/synchrony/smsn.git
 #WORKDIR /root/smsn
-#RUN echo "Fri May 12 00:11:31 PDT 2017" >/dev/null && git pull
+#RUN echo "Thu May 25 23:15:11 PDT 2017" >/dev/null && git pull
   # update string to ignore cache, pull latest smsn from git
 #RUN mvn clean install
 
