@@ -14,6 +14,7 @@ in smsn(-develop)
 
 in docker-smsn
   # edit the appropriate Dockerfile
+
   # run one of these
     # master
     sudo docker build -f branches/master/Dockerfile -t	        \
@@ -23,6 +24,11 @@ in docker-smsn
     sudo docker build -f branches/develop/Dockerfile -t	        \
       jeffreybbrown/smsn-develop:new-untested .			\
       | tee branches/develop/logs/"build-log.`date`.txt"
+    # emacs-too
+    sudo docker build -f branches/emacs-too/Dockerfile -t       \
+      jeffreybbrown/smsn-emacs-too:new-untested .		\
+      | tee branches/emacs-too/logs/"build-log.`date`.txt"
+
   # run one of these
     # master
     ln -s /home/jeff/smsn+/mode/lisp smsn-mode-lisp
@@ -31,13 +37,15 @@ in docker-smsn
 
 Test
 ====
+Test master or develop
+---
 Configure emacs:
   In emacs.d/elisp/, fiddle with the link (there are scripts for this):
     ln -s /home/jeff/smsn+/mode/lisp smsn-mode-lisp 
     ln -s /home/jeff/smsn+/mode-develop/lisp smsn-mode-lisp
   In .emacs
     change the port between 8182 and 8183
-    done ! toggle between smsn-mode and brain-mode
+    was done ? toggle between smsn-mode and brain-mode
       conditional on Josh saying okay to push it
 
 Run the docker image
@@ -52,6 +60,10 @@ Run the docker image
 
   Run master branch, from empty
     sudo docker run -it -v /home/jeff/smsn+/kb-blank:/mnt/smsn-data -p 8183:8182 -d -h 127.0.0.1 jeffreybbrown/smsn
+
+Test emacs-too
+---
+sudo docker run -v /home/jeff/smsn+/emacs-too-kb:/mnt/smsn-data jeffreybbrown/smsn-emacs-too:new-untested
 
 Save
 ===

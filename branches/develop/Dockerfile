@@ -38,7 +38,7 @@ RUN /root/gremlin/bin/gremlin-server.sh -i org.apache.tinkerpop neo4j-gremlin 3.
 #WORKDIR /root
 #RUN git clone -b develop https://github.com/synchrony/smsn.git
 #WORKDIR /root/smsn
-#RUN echo "Thu May 25 23:15:11 PDT 2017" >/dev/null && git pull
+#RUN echo "Tue May 30 21:49:54 PDT 2017" >/dev/null && git pull
   # update string to ignore cache, pull latest smsn from git
 #RUN mvn clean install
 
