@@ -4,6 +4,7 @@ note that |(pipe) binds before &&(chain)
 
 in smsn(-develop)
   mvn clean install
+
   # run one of these
     # master
     cp smsn-server/target/smsn-server-*-standalone.jar	\
