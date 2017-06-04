@@ -2,7 +2,7 @@ As one
 ===
 note that |(pipe) binds before &&(chain)
 
-in smsn(-develop)
+in smsn(-develop) # PITFALL: choose the right folder here
   mvn clean install
 
   # run one of these
@@ -12,6 +12,9 @@ in smsn(-develop)
     # develop
     cp smsn-server/target/smsn-server-*-standalone.jar	\
           ~/smsn+/docker-smsn/branches/develop/
+    # emacs-too
+    cp smsn-server/target/smsn-server-*-standalone.jar	\
+          ~/smsn+/docker-smsn/branches/emacs-too
 
 in docker-smsn
   # edit the appropriate Dockerfile
