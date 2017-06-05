@@ -4,7 +4,7 @@
 ;; Semantic Synchrony
   ;; where is the server?
     ;; (defvar smsn-server-host "fortytwo.net") ;; online
-    (defvar smsn-server-host "127.0.0.1") ;; local
+    (defvar smsn-server-host "172.17.0.3") ;; local
   (defvar smsn-server-port 8182) ;; is default, omittable
   (defvar smsn-server-protocol "websocket") ;; is default, omittable
   (defvar smsn-default-vcs-file "/mnt/smsn-data/vcs") ;; ought to be default

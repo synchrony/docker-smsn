@@ -35,6 +35,7 @@ COPY grapeConfig.xml /root/.groovy/grapeConfig.xml
 RUN /root/gremlin/bin/gremlin-server.sh -i org.apache.tinkerpop neo4j-gremlin 3.2.4
 
 # install Emacs
+RUN apt update
 RUN apt install -y emacs
 
 # configure Gremlin for Semantic Synchrony
@@ -51,6 +52,8 @@ WORKDIR /root
 RUN git clone -b develop https://github.com/synchrony/smsn-mode
 COPY dot-emacs.el /root
 RUN mv /root/dot-emacs.el /root/.emacs
+RUN mkdir /root/.emacs.d /root/.emacs.d/elisp
+RUN ln -s /root/smsn-mode/lisp /root/.emacs.d/elisp/smsn-mode-lisp
 
 RUN chmod 700 /root/gremlin/start.sh
 CMD ["/bin/bash"] # for easier user-modifiability
