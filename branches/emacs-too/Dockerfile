@@ -49,12 +49,15 @@ COPY gremlin-server-smsn.yaml neo4j.properties smsn.yaml /root/gremlin/conf/
 
 # install SmSn-mode
 WORKDIR /root
-RUN git clone -b develop https://github.com/synchrony/smsn-mode
-COPY dot-emacs.el /root
+#RUN echo "Tue Jun  6 02:02:59 PDT 2017" >/dev/null
+#RUN git clone -b emacs-too https://github.com/synchrony/smsn-mode
+COPY branches/emacs-too/mode-emacs-too /root/smsn-mode
+
+COPY branches/emacs-too/dot-emacs.el /root
 RUN mv /root/dot-emacs.el /root/.emacs
 RUN mkdir /root/.emacs.d /root/.emacs.d/elisp
 RUN ln -s /root/smsn-mode/lisp /root/.emacs.d/elisp/smsn-mode-lisp
 
 RUN chmod 700 /root/gremlin/start.sh
-CMD ["/bin/bash"] # for easier user-modifiability
-# CMD ["/root/gremlin/start.sh"]
+# CMD ["/bin/bash"] # for easier user-modifiability
+CMD ["/root/gremlin/start.sh"]
