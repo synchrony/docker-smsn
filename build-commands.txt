@@ -1,3 +1,5 @@
+!! Changing: Label the docker images with  $  date + first 7 char of commit id 
+
 As one
 ===
 note that |(pipe) binds before &&(chain)
@@ -71,6 +73,8 @@ sudo docker run -v /home/jeff/smsn+/emacs-too-kb:/mnt/smsn-data jeffreybbrown/sm
 
 Save
 ===
+!! Changing: Label the docker images with  $  date + first 7 char of commit id
+
 After running each, test it. If it works, change the tag (substitute for DATE-EXPRESSION):
   -- duh
     sudo docker tag smsn:just-built smsn:DATE-EXPRESSION

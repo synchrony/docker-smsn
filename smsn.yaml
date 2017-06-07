@@ -17,7 +17,7 @@ services:
 transactionBufferSize: 100
 
 # The activity log is a flat file to which a stream
-# of view and edit operations are recorded. Move it to a permanent location.
+# of view and edit operations are recorded. Move or mount it to a permanent location.
 activityLog: /mnt/smsn-data/activity.log
 
 sources:
