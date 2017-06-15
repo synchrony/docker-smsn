@@ -17,4 +17,4 @@ if [ $# -gt 0 ]
     sed -i "s|^port:.*|port: $1|" $CONF
 fi
 
-exec bin/gremlin-server.sh $CONF
+exec bin/gremlin-server.sh $CONF 2>&1 | tee gremlin-server.log
