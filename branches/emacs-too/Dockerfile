@@ -59,5 +59,5 @@ RUN mkdir /root/.emacs.d /root/.emacs.d/elisp
 RUN ln -s /root/smsn-mode/lisp /root/.emacs.d/elisp/smsn-mode-lisp
 
 RUN chmod 700 /root/gremlin/start.sh
-# CMD ["/bin/bash"] # for easier user-modifiability
 CMD ["/root/gremlin/start.sh"]
+CMD ["/bin/bash"]
