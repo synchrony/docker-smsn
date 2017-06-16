@@ -24,15 +24,15 @@ in docker-smsn
   # run one of these
     # master
     sudo docker build -f branches/master/Dockerfile -t	        \
-      jeffreybbrown/smsn:new-untested .				\
+      jeffreybbrown/smsn:untested .				\
       | tee branches/master/logs/"build-log.`date`.txt"
     # develop
     sudo docker build -f branches/develop/Dockerfile -t	        \
-      jeffreybbrown/smsn-develop:new-untested .			\
+      jeffreybbrown/smsn-develop:untested .			\
       | tee branches/develop/logs/"build-log.`date`.txt"
     # emacs-too
     sudo docker build -f branches/emacs-too/Dockerfile -t       \
-      jeffreybbrown/smsn-emacs-too:new-untested .		\
+      jeffreybbrown/smsn-emacs-too:untested .		\
       | tee branches/emacs-too/logs/"build-log.`date`.txt"
 
   # run one of these
@@ -69,7 +69,7 @@ Run the docker image
 
 Test emacs-too
 ---
-sudo docker run -v /home/jeff/smsn+/emacs-too-kb:/mnt/smsn-data jeffreybbrown/smsn-emacs-too:new-untested
+sudo docker run -v /home/jeff/smsn+/emacs-too-kb:/mnt/smsn-data jeffreybbrown/smsn-emacs-too:untested
 
 Save
 ===
