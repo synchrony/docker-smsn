@@ -37,6 +37,7 @@ RUN /root/gremlin/bin/gremlin-server.sh -i org.apache.tinkerpop neo4j-gremlin 3.
 # configure Gremlin for Semantic Synchrony
 RUN mkdir -p /root/gremlin/ext/smsn/plugin
 COPY start.sh /root/gremlin
+COPY rotate-log.sh /root/gremlin
 COPY branches/master/smsn-server-*-standalone.jar /root/gremlin/ext/smsn/plugin/
 COPY gremlin-server-smsn.yaml neo4j.properties smsn.yaml /root/gremlin/conf/
 
