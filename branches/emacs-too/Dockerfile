@@ -27,12 +27,12 @@ RUN python setup.py install
 
 # gremlin: install, and build the neo4j plugin for it
 WORKDIR /root
-COPY apache-tinkerpop-gremlin-server-3.2.4 /root/apache-tinkerpop-gremlin-server-3.2.4
-WORKDIR /root/apache-tinkerpop-gremlin-server-3.2.4
-RUN ln -s /root/apache-tinkerpop-gremlin-server-3.2.4 /root/gremlin
+COPY apache-tinkerpop-gremlin-server-3.2.5 /root/apache-tinkerpop-gremlin-server-3.2.5
+WORKDIR /root/apache-tinkerpop-gremlin-server-3.2.5
+RUN ln -s /root/apache-tinkerpop-gremlin-server-3.2.5 /root/gremlin
 
 COPY grapeConfig.xml /root/.groovy/grapeConfig.xml
-RUN /root/gremlin/bin/gremlin-server.sh -i org.apache.tinkerpop neo4j-gremlin 3.2.4
+RUN /root/gremlin/bin/gremlin-server.sh -i org.apache.tinkerpop neo4j-gremlin 3.2.5
 
 # install Emacs
 RUN apt update
