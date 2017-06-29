@@ -5,7 +5,7 @@ As one
 note that |(pipe) binds before &&(chain)
 
 in smsn(-develop)
-  # PITFALL: do this smsn or smsn-develop
+  # PITFALL: do this from smsn or smsn-develop
   mvn clean install
 
   # run one of these
@@ -23,7 +23,7 @@ in smsn(-develop)
     # because the Dockerfile wildcard-copies anything like it
 
 in docker-smsn
-  # edit the appropriate Dockerfile
+  # edit the appropriate Dockerfile, if needed
 
   # run one of these
     # master
