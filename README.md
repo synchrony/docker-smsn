@@ -19,4 +19,4 @@ https://hub.docker.com/r/jeffreybbrown/smsn/
 * Clone this Git repo somewhere.
 * Navigate into that folder.
 * Download [Gremlin Server](https://www.apache.org/dyn/closer.lua/tinkerpop/3.2.4/apache-tinkerpop-gremlin-console-3.2.4-bin.zip) and unzip it there.
-* To build the master branch, run `(sudo) docker build -t [name] branches/master`. Don't actually type the () or [] symbols. You might not need the `sudo`, and you can choose whatever name you want; a reasonable one would be `smsn`.
+* To build the master branch, run `(sudo) docker build -t [name] .`. Don't actually type the () or [] symbols. You might not need the `sudo`, and you can choose whatever name you want; a reasonable one would be `smsn`.
