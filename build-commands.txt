@@ -9,15 +9,8 @@ in smsn(-develop)
   mvn clean install
 
   # run one of these
-    # master
     cp smsn-server/target/smsn-server-*-standalone.jar	\
-          ~/smsn+/docker-smsn/branches/master/
-    # develop
-    cp smsn-server/target/smsn-server-*-standalone.jar	\
-          ~/smsn+/docker-smsn/branches/develop/
-    # emacs-too
-    cp smsn-server/target/smsn-server-*-standalone.jar	\
-          ~/smsn+/docker-smsn/branches/emacs-too
+          ~/smsn+/docker-smsn
 
   # PITFALL: Make sure there's only one .jar file at destination.
     # because the Dockerfile wildcard-copies anything like it
@@ -27,17 +20,17 @@ in docker-smsn
 
   # run one of these
     # master
-    sudo docker build -f branches/master/Dockerfile -t	        \
+    sudo docker build -f Dockerfile -t	        \
       jeffreybbrown/smsn:untested .				\
-      | tee branches/master/logs/"build-log.`date`.txt"
+      | tee logs/"build-log.`date`.txt"
     # develop
-    sudo docker build -f branches/develop/Dockerfile -t	        \
+    sudo docker build -f Dockerfile -t	        \
       jeffreybbrown/smsn-develop:untested .			\
-      | tee branches/develop/logs/"build-log.`date`.txt"
+      | tee logs/"build-log.`date`.txt"
     # emacs-too
-    sudo docker build -f branches/emacs-too/Dockerfile -t       \
+    sudo docker build -f Dockerfile -t       \
       jeffreybbrown/smsn-emacs-too:untested .		\
-      | tee branches/emacs-too/logs/"build-log.`date`.txt"
+      | tee logs/"build-log.`date`.txt"
 
   # run one of these
     # master
