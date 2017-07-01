@@ -44,5 +44,6 @@ COPY gremlin-server-smsn.yaml neo4j.properties smsn.yaml /root/gremlin/conf/
 EXPOSE 8182
 
 RUN chmod 700 /root/gremlin/start.sh
+RUN chmod 700 /root/gremlin/rotate-log.sh
 # CMD ["/bin/bash"] # for easier user-modifiability
 CMD ["/root/gremlin/start.sh"]
