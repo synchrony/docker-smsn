@@ -43,7 +43,7 @@ RUN mkdir -p /root/gremlin/ext/smsn/plugin
 COPY start.sh /root/gremlin
 #COPY deploy-jar.sh /root/smsn
 #RUN bash /root/smsn/deploy-jar.sh
-COPY branches/develop/smsn-server-*-standalone.jar /root/gremlin/ext/smsn/plugin
+COPY smsn-server-*-standalone.jar /root/gremlin/ext/smsn/plugin
   # we build smsn outside of docker
 COPY gremlin-server-smsn.yaml neo4j.properties smsn.yaml /root/gremlin/conf/
 
@@ -51,9 +51,9 @@ COPY gremlin-server-smsn.yaml neo4j.properties smsn.yaml /root/gremlin/conf/
 WORKDIR /root
 #RUN echo "Tue Jun  6 02:02:59 PDT 2017" >/dev/null
 #RUN git clone -b emacs-too https://github.com/synchrony/smsn-mode
-COPY branches/emacs-too/mode-emacs-too /root/smsn-mode
+COPY mode-emacs-too /root/smsn-mode
 
-COPY branches/emacs-too/dot-emacs.el /root
+COPY dot-emacs.el /root
 RUN mv /root/dot-emacs.el /root/.emacs
 RUN mkdir /root/.emacs.d /root/.emacs.d/elisp
 RUN ln -s /root/smsn-mode/lisp /root/.emacs.d/elisp/smsn-mode-lisp
