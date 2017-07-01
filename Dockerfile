@@ -38,7 +38,7 @@ RUN /root/gremlin/bin/gremlin-server.sh -i org.apache.tinkerpop neo4j-gremlin 3.
 RUN mkdir -p /root/gremlin/ext/smsn/plugin
 COPY start.sh /root/gremlin
 COPY rotate-log.sh /root/gremlin
-COPY branches/develop/smsn-server-*-standalone.jar /root/gremlin/ext/smsn/plugin
+COPY smsn-server-*-standalone.jar /root/gremlin/ext/smsn/plugin
 COPY gremlin-server-smsn.yaml neo4j.properties smsn.yaml /root/gremlin/conf/
 
 EXPOSE 8182
