@@ -1,4 +1,6 @@
 #!/bin/sh
+# This preserves the logs about a given the knowledge graph across gremlin sessions, within a single docker session.
+
 ## Move "$1.$2" to "$1.$(($2+1))", first rotating the target as well.
 rotate () {
   if [ -e "$1.$(($2+1))" ]; then rotate "$1" $(($2+1)); fi
