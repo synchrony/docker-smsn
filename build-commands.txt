@@ -26,11 +26,11 @@ in docker-smsn
     # develop
     sudo docker build -f Dockerfile -t	        \
       jeffreybbrown/smsn-develop:untested .			\
-      | tee logs/"build-log.`date`.txt"
+      | tee logs/"build-log.develop.`date`.txt"
     # emacs-too
     sudo docker build -f Dockerfile -t       \
       jeffreybbrown/smsn-emacs-too:untested .		\
-      | tee logs/"build-log.`date`.txt"
+      | tee logs/"build-log.emacs-too.`date`.txt"
 
   # run one of these
     # master
