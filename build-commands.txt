@@ -6,10 +6,10 @@ note that |(pipe) binds before &&(chain)
 
 in smsn(-develop)
   # PITFALL: do this from smsn or smsn-develop
-  mvn clean install
+  gradle clean build
 
-  # run one of these
-    cp smsn-server/target/smsn-server-*-standalone.jar	\
+  # do this from that same folder
+    cp smsn-server/build/libs/smsn-server-*-all.jar
           ~/smsn+/docker-smsn
 
   # PITFALL: Make sure there's only one .jar file at destination.
@@ -32,7 +32,9 @@ in docker-smsn
       jeffreybbrown/smsn-emacs-too:untested .		\
       | tee logs/"build-log.emacs-too.`date`.txt"
 
-  # run one of these
+  # create one of these links from .emacs.d/elisp/ (if needed)
+    # or just change their names, if both links already exist
+
     # master
     ln -s /home/jeff/smsn+/mode/lisp smsn-mode-lisp
     # develop
@@ -42,7 +44,7 @@ Test
 ====
 Test master or develop
 ---
-Configure emacs:
+Configure emacs (if needed):
   In emacs.d/elisp/, fiddle with the link (there are scripts for this):
     ln -s /home/jeff/smsn+/mode/lisp smsn-mode-lisp 
     ln -s /home/jeff/smsn+/mode-develop/lisp smsn-mode-lisp
@@ -53,10 +55,10 @@ Configure emacs:
 
 Run the docker image
   Prepare | what differs
-    Note inconsistent: Elsewhere, master is made explicit; here, develop
+    Note inconsistency: Elsewhere, master is made explicit; here, develop
     Be inconsistent: Use DIFFERENT VCS FOLDERS if running two docker containers
-    Fiddle the first port between 8182 and 8183.
-      The Docker port is always 8182.
+    Fiddle the first(native) port between 8182 and 8183.
+      The second(Docker) port is always 8182.
 
   Run develop branch, on REAL DATA
     sudo docker run -it -v /home/jeff/smsn+/kb:/mnt/smsn-data -p 8182:8182 -d -h 127.0.0.1 jeffreybbrown/smsn-develop
