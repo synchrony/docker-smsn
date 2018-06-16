@@ -9,7 +9,7 @@ in smsn(-develop)
   gradle clean build
 
   # do this from that same folder
-    cp smsn-server/build/libs/smsn-server-*-all.jar
+    cp smsn-server/build/libs/smsn-server-*.jar \
           ~/smsn+/docker-smsn
 
   # PITFALL: Make sure there's only one .jar file at destination.
@@ -61,14 +61,14 @@ Run the docker image
       The second(Docker) port is always 8182.
 
   Run develop branch, on REAL DATA
-    sudo docker run -it -v /home/jeff/smsn+/kb:/mnt/smsn-data -p 8182:8182 -d -h 127.0.0.1 jeffreybbrown/smsn-develop
+    sudo docker run --name smsn -it -v /home/jeff/smsn+/kb:/mnt/smsn-data -p 8182:8182 -d -h 127.0.0.1 jeffreybbrown/smsn-develop
 
   Run master branch, from empty
-    sudo docker run -it -v /home/jeff/smsn+/kb-blank:/mnt/smsn-data -p 8183:8182 -d -h 127.0.0.1 jeffreybbrown/smsn
+    sudo docker run --name smsn -it -v /home/jeff/smsn+/kb-blank:/mnt/smsn-data -p 8183:8182 -d -h 127.0.0.1 jeffreybbrown/smsn
 
 Test emacs-too
 ---
-sudo docker run -v /home/jeff/smsn+/emacs-too-kb:/mnt/smsn-data jeffreybbrown/smsn-emacs-too:untested
+sudo docker run --name smsn -v /home/jeff/smsn+/emacs-too-kb:/mnt/smsn-data jeffreybbrown/smsn-emacs-too:untested
 
 Save
 ===
