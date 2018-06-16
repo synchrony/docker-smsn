@@ -15,7 +15,7 @@ printf "\nWhat folder to mount? (Default: $default_folder.)\n"
 read folder
 folder=${folder:-$default_folder}
 
-default_branch=untested
+default_branch=2018-02-26
 printf "\nWhat branch of smsn-develop to use? (Default: $default_branch.)\n"
 read branch
 branch=${branch:-$default_branch}
