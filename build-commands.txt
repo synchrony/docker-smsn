@@ -7,16 +7,16 @@ note that |(pipe) binds before &&(chain)
 in smsn(-develop)
   # PITFALL: do this from smsn or smsn-develop
   gradle clean build
+  gradle :smsn-server:shadowJar
+
+  # PITFALL: Be sure only one .jar file matches the pattern below,
+    # because the Dockerfile wildcard-copies anything like it
 
   # do this from that same folder
     cp smsn-server/build/libs/smsn-server-*.jar \
           ~/smsn+/docker-smsn
 
-  # PITFALL: Make sure there's only one .jar file at destination.
-    # because the Dockerfile wildcard-copies anything like it
-
-in docker-smsn
-  # edit the appropriate Dockerfile, if needed
+in docker-smsn # edit the appropriate Dockerfile, if needed
 
   # run one of these
     # master
@@ -40,6 +40,15 @@ in docker-smsn
     # develop
     ln -s /home/jeff/smsn+/mode-develop/lisp smsn-mode-lisp
 
+Debug
+=====
+# Run this on an incomplete build to try to build the rest of the way.
+docker run --name smsn -it \
+  -v /home/jeff/Encfs/kb-no-encfs:/mnt/smsn-data \
+  -p 8183:8182
+  -h 127.0.0.1 \
+  jeffreybbrown/smsn-develop:untested
+
 Test
 ====
 Test master or develop
@@ -61,14 +70,14 @@ Run the docker image
       The second(Docker) port is always 8182.
 
   Run develop branch, on REAL DATA
-    sudo docker run --name smsn -it -v /home/jeff/smsn+/kb:/mnt/smsn-data -p 8182:8182 -d -h 127.0.0.1 jeffreybbrown/smsn-develop
+    sudo docker run --name smsn -itd -v /home/jeff/Encfs/kb-not-encfs:/mnt/smsn-data -p 8182:8182 -h 127.0.0.1 jeffreybbrown/smsn-develop
 
   Run master branch, from empty
-    sudo docker run --name smsn -it -v /home/jeff/smsn+/kb-blank:/mnt/smsn-data -p 8183:8182 -d -h 127.0.0.1 jeffreybbrown/smsn
+    sudo docker run --name smsn -itd -v /home/jeff/Encfs/kb-not-encfs-blank:/mnt/smsn-data -p 8183:8182 -h 127.0.0.1 jeffreybbrown/smsn
 
 Test emacs-too
 ---
-sudo docker run --name smsn -v /home/jeff/smsn+/emacs-too-kb:/mnt/smsn-data jeffreybbrown/smsn-emacs-too:untested
+sudo docker run --name smsn -v /home/jeff/???/emacs-too-kb:/mnt/smsn-data jeffreybbrown/smsn-emacs-too:untested
 
 Save
 ===

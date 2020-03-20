@@ -1,4 +1,7 @@
 FROM ubuntu
+RUN echo "last fully rebuilt 2020 03 19"
+  # PITFALL: b/c apt, etc. can go stale
+
 RUN echo "root:smsn" | chpasswd
 
 # where to mount data
@@ -8,8 +11,8 @@ RUN mkdir /mnt/smsn-data
 RUN apt-get clean && apt-get update
 RUN apt-get install locales
 RUN locale-gen en_US.UTF-8
-ENV LANG en_US.UTF-8  
-ENV LANGUAGE en_US:en  
+ENV LANG en_US.UTF-8
+ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
 
 # misc prerequisites
@@ -28,16 +31,19 @@ RUN python setup.py install
 # gremlin: install, and build the neo4j plugin for it
 WORKDIR /root
 COPY apache-tinkerpop-gremlin-server-3.2.5 /root/apache-tinkerpop-gremlin-server-3.2.5
+
 WORKDIR /root/apache-tinkerpop-gremlin-server-3.2.5
 RUN ln -s /root/apache-tinkerpop-gremlin-server-3.2.5 /root/gremlin
 
 COPY grapeConfig.xml /root/.groovy/grapeConfig.xml
-RUN /root/gremlin/bin/gremlin-server.sh -i org.apache.tinkerpop neo4j-gremlin 3.2.5
+RUN chmod u+x /root/gremlin/bin/gremlin-server.sh      && \
+              /root/gremlin/bin/gremlin-server.sh -i      \
+              org.apache.tinkerpop neo4j-gremlin 3.2.5
 
 # configure Gremlin for Semantic Synchrony
 RUN mkdir -p /root/gremlin/ext/smsn/plugin
 COPY start-smsn.sh checkout-sample-data.sh rotate-log.sh /root/gremlin/
-COPY smsn-server-*-all.jar /root/gremlin/ext/smsn/plugin
+COPY smsn-server-*.jar /root/gremlin/ext/smsn/plugin
 COPY gremlin-server-smsn.yaml neo4j.properties \
    /root/gremlin/conf/
 RUN ln -s /mnt/smsn-data/smsn.yaml /root/gremlin/conf/smsn.yaml
