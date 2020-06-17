@@ -28,28 +28,26 @@ RUN tar -xvzf web.py-0.38.tar.gz && rm web.py-0.38.tar.gz
 WORKDIR /root/web.py-0.38
 RUN python setup.py install
 
-# gremlin: install, and build the neo4j plugin for it
-WORKDIR /root
-COPY apache-tinkerpop-gremlin-server-3.2.5 /root/apache-tinkerpop-gremlin-server-3.2.5
-
-WORKDIR /root/apache-tinkerpop-gremlin-server-3.2.5
-RUN ln -s /root/apache-tinkerpop-gremlin-server-3.2.5 /root/gremlin
-
+# gremlin server: install, and build the neo4j plugin for it
+ENV GS_VERSION 3.2.5
+COPY apache-tinkerpop-gremlin-server-${GS_VERSION} \
+          /root/apache-tinkerpop-gremlin-server-${GS_VERSION}
+RUN ln -s /root/apache-tinkerpop-gremlin-server-${GS_VERSION} /root/gremlin
+WORKDIR                                                       /root/gremlin
 COPY grapeConfig.xml /root/.groovy/grapeConfig.xml
-RUN chmod u+x /root/gremlin/bin/gremlin-server.sh      && \
-              /root/gremlin/bin/gremlin-server.sh -i      \
-              org.apache.tinkerpop neo4j-gremlin 3.2.5
+RUN chmod u+x /root/gremlin/bin/gremlin-server.sh  && \
+              /root/gremlin/bin/gremlin-server.sh     \
+              org.apache.tinkerpop neo4j-gremlin ${GS_VERSION}
 
 # configure Gremlin for Semantic Synchrony
 RUN mkdir -p /root/gremlin/ext/smsn/plugin
 COPY start-smsn.sh checkout-sample-data.sh rotate-log.sh /root/gremlin/
-COPY smsn-server-*.jar /root/gremlin/ext/smsn/plugin
+COPY smsn-server-1.5-all.jar /root/gremlin/ext/smsn/plugin
 COPY gremlin-server-smsn.yaml neo4j.properties \
    /root/gremlin/conf/
 RUN ln -s /mnt/smsn-data/smsn.yaml /root/gremlin/conf/smsn.yaml
 
 EXPOSE 8182
 
-WORKDIR /root/gremlin
 RUN chmod 700 start-smsn.sh rotate-log.sh checkout-sample-data.sh
 CMD ["/bin/bash"]

@@ -6,6 +6,7 @@ note that |(pipe) binds before &&(chain)
 
 in smsn(-develop)
   # PITFALL: do this from smsn or smsn-develop
+  # PITFALL: gradle version must be 4, not later
   gradle clean build
   gradle :smsn-server:shadowJar
 
@@ -20,15 +21,15 @@ in docker-smsn # edit the appropriate Dockerfile, if needed
 
   # run one of these
     # master
-    sudo docker build -f Dockerfile -t	        \
+    docker build -f Dockerfile -t	        \
       jeffreybbrown/smsn:untested .				\
       | tee logs/"build-log.`date`.txt"
     # develop
-    sudo docker build -f Dockerfile -t	        \
+    docker build -f Dockerfile -t	        \
       jeffreybbrown/smsn-develop:untested .			\
       | tee logs/"build-log.develop.`date`.txt"
     # emacs-too
-    sudo docker build -f Dockerfile -t       \
+    docker build -f Dockerfile -t       \
       jeffreybbrown/smsn-emacs-too:untested .		\
       | tee logs/"build-log.emacs-too.`date`.txt"
 
@@ -45,7 +46,7 @@ Debug
 # Run this on an incomplete build to try to build the rest of the way.
 docker run --name smsn -it \
   -v /home/jeff/Encfs/kb-no-encfs:/mnt/smsn-data \
-  -p 8183:8182
+  -p 8183:8182 \
   -h 127.0.0.1 \
   jeffreybbrown/smsn-develop:untested
 
@@ -70,14 +71,14 @@ Run the docker image
       The second(Docker) port is always 8182.
 
   Run develop branch, on REAL DATA
-    sudo docker run --name smsn -itd -v /home/jeff/Encfs/kb-not-encfs:/mnt/smsn-data -p 8182:8182 -h 127.0.0.1 jeffreybbrown/smsn-develop
+    docker run --name smsn -itd -v /home/jeff/Encfs/kb-not-encfs:/mnt/smsn-data -p 8182:8182 -h 127.0.0.1 jeffreybbrown/smsn-develop
 
   Run master branch, from empty
-    sudo docker run --name smsn -itd -v /home/jeff/Encfs/kb-not-encfs-blank:/mnt/smsn-data -p 8183:8182 -h 127.0.0.1 jeffreybbrown/smsn
+    docker run --name smsn -itd -v /home/jeff/Encfs/kb-not-encfs-blank:/mnt/smsn-data -p 8183:8182 -h 127.0.0.1 jeffreybbrown/smsn
 
 Test emacs-too
 ---
-sudo docker run --name smsn -v /home/jeff/???/emacs-too-kb:/mnt/smsn-data jeffreybbrown/smsn-emacs-too:untested
+docker run --name smsn -v /home/jeff/???/emacs-too-kb:/mnt/smsn-data jeffreybbrown/smsn-emacs-too:untested
 
 Save
 ===
@@ -85,8 +86,8 @@ Save
 
 After running each, test it. If it works, change the tag (substitute for DATE-EXPRESSION):
   -- duh
-    sudo docker tag smsn:just-built smsn:DATE-EXPRESSION
-    sudo docker tag smsn:just-built smsn:latest
+    docker tag smsn:just-built smsn:DATE-EXPRESSION
+    docker tag smsn:just-built smsn:latest
   
-    sudo docker tag smsn-develop:just-built smsn-develop:DATE-EXPRESSION
-    sudo docker tag smsn-develop:just-built smsn-develop:latest
+    docker tag smsn-develop:just-built smsn-develop:DATE-EXPRESSION
+    docker tag smsn-develop:just-built smsn-develop:latest
