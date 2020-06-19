@@ -21,7 +21,7 @@ RUN apt install -y git wget unzip maven vim
 RUN apt install -y default-jre default-jdk # java
 RUN apt install -y tcpdump net-tools locales python # maybe not needed
 
-# python's web library
+# a web library for python
 WORKDIR /root
 RUN wget http://webpy.org/static/web.py-0.38.tar.gz
 RUN tar -xvzf web.py-0.38.tar.gz && rm web.py-0.38.tar.gz
@@ -29,14 +29,15 @@ WORKDIR /root/web.py-0.38
 RUN python setup.py install
 
 # gremlin server: install, and build the neo4j plugin for it
+RUN echo "The time is jue jun 18 18:31:48 -05 2020"
 ENV GS_VERSION 3.2.5
-COPY apache-tinkerpop-gremlin-server-${GS_VERSION} \
-          /root/apache-tinkerpop-gremlin-server-${GS_VERSION}
-RUN ln -s /root/apache-tinkerpop-gremlin-server-${GS_VERSION} /root/gremlin
-WORKDIR                                                       /root/gremlin
+ENV GS_FOLDER /root/apache-tinkerpop-gremlin-server-${GS_VERSION}
+COPY apache-tinkerpop-gremlin-server-${GS_VERSION} ${GS_FOLDER}
 COPY grapeConfig.xml /root/.groovy/grapeConfig.xml
-RUN chmod u+x /root/gremlin/bin/gremlin-server.sh  && \
-              /root/gremlin/bin/gremlin-server.sh     \
+RUN ln -s ${GS_FOLDER} /root/gremlin
+WORKDIR                /root/gremlin
+RUN chmod u+x /root/gremlin/bin/gremlin-server.sh && \
+              /root/gremlin/bin/gremlin-server.sh -i  \
               org.apache.tinkerpop neo4j-gremlin ${GS_VERSION}
 
 # configure Gremlin for Semantic Synchrony
