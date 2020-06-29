@@ -40,6 +40,8 @@ RUN chmod u+x /root/gremlin/bin/gremlin-server.sh && \
               /root/gremlin/bin/gremlin-server.sh -i  \
               org.apache.tinkerpop neo4j-gremlin ${GS_VERSION}
 
+RUN apt install -y iproute2
+
 # configure Gremlin for Semantic Synchrony
 RUN mkdir -p /root/gremlin/ext/smsn/plugin
 COPY start-smsn.sh checkout-sample-data.sh rotate-log.sh /root/gremlin/
